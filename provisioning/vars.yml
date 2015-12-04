@@ -1,0 +1,5 @@
+---
+project_name: contriboot
+project_root: /var/www
+project_repo: https://github.com/jsunconf/contriboot
+theme_to_deploy: basic-theme

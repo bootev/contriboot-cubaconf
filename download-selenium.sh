@@ -1,0 +1,1 @@
+test -s ./test/integration/bin/selenium-server-standalone-2.43.1.jar || curl -o ./test/integration/bin/selenium-server-standalone-2.43.1.jar http://selenium-release.storage.googleapis.com/2.43/selenium-server-standalone-2.43.1.jar

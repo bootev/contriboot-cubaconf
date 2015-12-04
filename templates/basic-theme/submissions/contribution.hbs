@@ -1,0 +1,56 @@
+<div ng-app="votes" ng-init="votes='{{votes}}';hasVoted={{hasVoted}};id='{{contribution._id}}'">
+  <div ng-controller="VoteController">
+
+    <div class="row">
+      <div class="col-md-9">
+        <h2>{{contribution.title}}</h2>
+        <h3 class="submission-name">{{contribution.name}}
+          {{#if contribution.twittername}}
+             - <a href="http://twitter.com/{{contribution.twittername}}">@{{contribution.twittername}}</a>
+          {{/if}}
+        </h3>
+        <div class="submission-description">{{{contribution.description}}}</div>
+
+      </div>
+      <div class="col-md-3 text-center control-col">
+        <div class="vote-count">
+          \{{votes}}
+        </div>
+        <form name="form" role="form" novalidate ng-submit="upvote()">
+          <button class="btn btn-primary btn-lg vote-button" ng-disabled="hasVoted">
+            <span ng-if="!hasVoted">
+              I'm interested
+            </span>
+            <span ng-if="hasVoted">
+              Thanks
+            </span>
+
+            <span ng-class="{'glyphicon-heart': hasVoted, 'glyphicon-heart-empty': !hasVoted}"
+            class="glyphicon"></span>
+          </button>
+        </form>
+
+        {{#if tweetText}}
+        <div class="tweet-control">
+          <a class="tweetlink" href="http://twitter.com/home?status={{tweetText}}"><i class="icon-twitter-bird"></i><br/>
+          Tweet about your talk</a>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+
+  </div>
+  {{#if respondToDoc}}
+    <h3>This contribution is a response to:</h3>
+    <div class="respond-to-doc">
+      <ul>
+        <li>
+          <a href="/interests/{{respondToDoc._id}}">{{respondToDoc.title}}</a>
+        </li>
+      </ul>
+    </div>
+  {{/if}}
+</div>
+
+<script src="/static/bower_components/angular/angular.js"></script>
+<script src="/static/basic-theme/votes.js"></script>

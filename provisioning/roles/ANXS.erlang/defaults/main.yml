@@ -1,0 +1,7 @@
+# file: erlang/defaults/main.yml
+
+erlang_version: "R16B03-1"
+erlang_build_flags: ""
+erlang_install_method: "source"
+
+ubuntu_version: "trusty"

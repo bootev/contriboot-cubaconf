@@ -1,0 +1,58 @@
+<div ng-app="votes" ng-init="votes='{{votes}}';hasVoted={{hasVoted}};id='{{interest._id}}'">
+  <div ng-controller="VoteController">
+
+    <div class="row">
+      <div class="col-md-9">
+        <h2>{{interest.title}}</h2>
+        <h3 class="submission-name">{{interest.name}}
+          {{#if interest.twittername}}
+             - <a href="http://twitter.com/{{interest.twittername}}">@{{interest.twittername}}</a>
+          {{/if}}
+        </h3>
+        <div class="submission-description">{{{interest.description}}}</div>
+
+      </div>
+      <div class="col-md-3 text-center control-col">
+        <div class="vote-count">
+          \{{votes}}
+        </div>
+        <form name="form" role="form" novalidate ng-submit="upvote()">
+          <button class="btn btn-primary btn-lg vote-button" ng-disabled="hasVoted">
+            <span ng-if="!hasVoted">
+              I'm interested
+            </span>
+            <span ng-if="hasVoted">
+              Thanks
+            </span>
+
+            <span ng-class="{'glyphicon-heart': hasVoted, 'glyphicon-heart-empty': !hasVoted}"
+            class="glyphicon"></span>
+          </button>
+        </form>
+
+        {{#if tweetText}}
+        <div class="tweet-control">
+          <a class="tweetlink" href="http://twitter.com/home?status={{tweetText}}"><i class="icon-twitter-bird"></i><br/>
+          Tweet about your interest</a>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  <div class="respond-with-talk-container">
+    <a href="/contributions/new?respondTo={{interest._id}}" class="respond-with-talk btn btn-primary">Respond with contribution</a>
+    {{#if responses}}
+      <h3>Responses to this interest:</h3>
+      <ul>
+        {{#each responses}}
+          <li class="response-to-interest">
+            <a href="/contributions/{{this.value._id}}">{{this.value.title}}</a>
+          </li>
+        {{/each}}
+      </ul>
+    {{/if}}
+  </div>
+</div>
+
+<script src="/static/bower_components/angular/angular.js"></script>
+<script src="/static/basic-theme/votes.js"></script>

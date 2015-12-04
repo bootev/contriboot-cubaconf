@@ -1,0 +1,44 @@
+<h2>{{title}}</h2>
+<div ng-app ng-init="submission.twittername='@';">
+  {{#if responseToInterest}}
+    <div class="respond-to-interest">
+      <h3>This is a response to: <strong>{{responseToInterest.title}}</strong></h3>
+    </div>
+  {{/if}}
+
+  <div class="questions">
+    Questions? <a target="_blank" href="http://2015.jsunconf.eu/faq/">Read our FAQ!</a>
+  </div>
+
+  <form method="POST" action="/{{type}}/" name="form" role="form" novalidate>
+    <div class="form-group">
+      <label for="title">Title*</label>
+      <input ng-required="true" ng-model="submission.title" name="title" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Your name*</label>
+      <input ng-required="true" ng-model="submission.name" name="name" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="twittername">Twitter username</label>
+      <input ng-required="false" ng-model="submission.twittername" name="twittername" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description* (min 10 chars)</label>
+      <textarea rows="10" ng-required="true" ng-minlength="10" ng-model="submission.description" name="description" class="form-control"></textarea>
+      <div class="pull-right markdown-info"><span class="glyphicon-info-sign glyphicon markdown-info-icon"></span>Markdown supported</div>
+    </div>
+
+    {{#if responseToInterest}}
+      <input name="interest" type="hidden" value="{{responseToInterest._id}}"></input>
+    {{/if}}
+
+    <button class="btn btn-primary" ng-disabled="form.$invalid">Submit</button>
+  </form>
+
+</div>
+
+<script src="/static/bower_components/angular/angular.js"></script>
