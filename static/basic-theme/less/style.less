@@ -18,16 +18,19 @@
 
 @import "fontello.less";
 
-@brand-primary: #8f1332;
+@brand-primary: #601f27;
 
 
 html, body {
   height: 100%;
   color: #434a54;
-  font-family: 'Merriweather', serif;
+  font-family: Helvetica;
   font-size: 100%;
   line-height: 1.333;
   -webkit-font-smoothing: antialiased;
+  background: #92137f url("/static/basic-theme/images/header.jpg") center center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 h3 {
@@ -38,18 +41,27 @@ h3 {
 .site {
   height: 100%;
   color: #434a54;
-  font-family: 'Merriweather', serif;
+  font-family: Helvetica;
   font-size: 100%;
   line-height: 1.333;
   -webkit-font-smoothing: antialiased;
 }
+.navigation {
+  text-align: center;
+}
+.menu {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.content {
+  padding: 15px;
+  background-color: #fff;
+}
 
 .site-header {
   font-size: 1rem;
-  background: #92137f url("/static/basic-theme/images/header.jpg") center center no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
+
   text-align: center;
   color: #fff;
 }
@@ -85,6 +97,14 @@ h3 {
   vertical-align: middle;
 }
 
+.headline-anchor, .headline-anchor:hover, .headline-anchor:active, .headline-anchor:focus {
+  text-decoration: none;
+}
+.headline {
+  font-size: 32px;
+  color: #fff;
+  text-align: left;
+}
 .site-header-intro {
   max-width: 75rem;
   margin: 0 auto;
@@ -95,7 +115,7 @@ h3 {
 }
 
 .menu__item__link {
-  font-size: 1.25em;
+  font-size: 16px;
   display: inline-block;
   color: #fff;
   font-weight: bold;
@@ -123,6 +143,7 @@ h3 {
   list-style: none;
   margin: 2em 0;
   padding: 0;
+  background-color: #47383a;
 }
 
 .text-glyphicon {
